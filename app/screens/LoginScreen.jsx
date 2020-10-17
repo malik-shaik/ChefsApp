@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { AppForm, AppFormField, SubmitButton } from "../components/form";
 import { FacebookLogin, Logo, Screen } from "../components";
 import colors from "../config/colors";
+import userApi from "../api/userAPI";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,13 +18,15 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = () => {
+  const hadleSubmit = (data) => userApi.login(data);
+
   return (
     <Screen style={styles.container}>
       <Logo />
 
       <AppForm
         initialValues={{ email: "", password: "" }}
-        onSubmit={(data) => console.log(data)}
+        onSubmit={hadleSubmit}
         validationSchema={validationSchema}
       >
         <AppFormField
