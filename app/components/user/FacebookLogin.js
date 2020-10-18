@@ -1,5 +1,5 @@
 import React from "react";
-import signInWithFacebook from "../../api/facebookAPI";
+import { facebookAPI as signInWithFacebook } from "../../api";
 import { AppButton } from "../layout";
 
 const FacebookLogin = () => (
