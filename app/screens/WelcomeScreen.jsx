@@ -1,12 +1,13 @@
 import React from "react";
 import { StyleSheet, Image, SafeAreaView } from "react-native";
-import { Logo } from "../components";
+import { Logo } from "../components/layout";
+import welcomeImage from "../assets/welcome.png";
 
 const WelcomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Logo />
-      <Image source={require("./../assets/welcome.png")} />
+      <Image source={welcomeImage} />
     </SafeAreaView>
   );
 };

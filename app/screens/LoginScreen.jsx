@@ -1,8 +1,9 @@
 import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import * as Yup from "yup";
-import { AppForm, AppFormField, SubmitButton } from "../components/form";
-import { FacebookLogin, Logo, Screen } from "../components";
+import { AppForm, AppFormField, SubmitButton } from "../components/layout/form";
+import { Logo, Screen } from "../components/layout";
+import { FacebookLogin } from "../components/user";
 import colors from "../config/colors";
 import userApi from "../api/userAPI";
 
