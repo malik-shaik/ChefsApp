@@ -1,34 +1,24 @@
-import React from "react";
-import { Text, StyleSheet, View } from "react-native";
-import * as Yup from "yup";
-import { AppForm, AppFormField, SubmitButton } from "../components/layout/form";
-import { Logo, Screen } from "../components/layout";
-import { FacebookLogin } from "../components/user";
-import colors from "../config/colors";
-import { userAPI } from "../api";
-
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .required(" * Please enter email address")
-    .email()
-    .label("Email"),
-  password: Yup.string()
-    .required(" * Please enter password")
-    .min(4)
-    .label("Password")
-});
+import React, { useContext } from 'react';
+import { Text, StyleSheet, View, Alert } from 'react-native';
+import { AppForm, AppFormField, SubmitButton } from '../components/layout/form';
+import { Logo, Screen } from '../components/layout';
+import { FacebookLogin } from '../components/user';
+import colors from '../config/colors';
+import { AuthContext } from '../context/auth/authContext';
+import { validationSchemas } from '../utils';
 
 const LoginScreen = () => {
-  const hadleSubmit = (data) => userAPI.login(data);
+  const { loginAction, error } = useContext(AuthContext);
+
+  if (error) Alert.alert('Log in Error', error, [{ text: 'OK' }]);
 
   return (
     <Screen style={styles.container}>
       <Logo />
-
       <AppForm
-        initialValues={{ email: "", password: "" }}
-        onSubmit={hadleSubmit}
-        validationSchema={validationSchema}
+        initialValues={{ email: '', password: '' }}
+        onSubmit={(data) => loginAction(data)}
+        validationSchema={validationSchemas.loginValidationSchema}
       >
         <AppFormField
           autoCapitalize="none"
@@ -53,6 +43,7 @@ const LoginScreen = () => {
         <SubmitButton title="Log ind" />
       </AppForm>
 
+      {/* FIX: Extract the following code and make a React component */}
       <View style={styles.horizontalLine}>
         <View style={styles.hairline} />
         <Text style={styles.text}>eller</Text>
@@ -69,9 +60,9 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: { padding: 30 },
   horizontalLine: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 10,
     marginBottom: 10
   },
@@ -84,7 +75,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     // paddingHorizontal: 5,
-    alignSelf: "center",
-    color: "#A2A2A2"
+    alignSelf: 'center',
+    color: '#A2A2A2'
   }
 });

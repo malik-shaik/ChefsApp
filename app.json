@@ -19,6 +19,12 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
+    },
+    "extra": {
+      "facbookOptions": {
+        "appId": "691674944790277",
+        "appName": "chefsapp"
+      }
     }
   }
 }
