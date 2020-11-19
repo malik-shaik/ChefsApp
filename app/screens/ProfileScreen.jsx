@@ -4,11 +4,11 @@ import Screen from '../components/layout/Screen';
 import { AuthContext } from '../context/auth/authContext';
 
 const ProfileScreen = () => {
-  const { logout } = useContext(AuthContext);
+  const { logoutAction } = useContext(AuthContext);
   return (
     <Screen>
       <Button
-        onPress={logout}
+        onPress={logoutAction}
         title="Logout"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"

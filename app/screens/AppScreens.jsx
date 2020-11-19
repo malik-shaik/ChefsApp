@@ -6,13 +6,12 @@ import DashboardScreen from './DashboardScreen';
 import { getToken } from '../context/tokenStorage';
 
 const AppScreens = () => {
-  const { isAuthenticated, loadUser } = useContext(AuthContext);
+  const { isAuthenticated, loadUserAction } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log('is auth:', isAuthenticated);
     const restoreUser = async () => {
       const token = await getToken();
-      if (token) await loadUser();
+      if (token) await loadUserAction();
     };
     restoreUser();
   }, [isAuthenticated]);
