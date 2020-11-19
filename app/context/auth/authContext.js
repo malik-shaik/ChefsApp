@@ -20,7 +20,7 @@ export const AuthProvider = (props) => {
 
   /* Actions */
   // Load User
-  const loadUser = async () => {
+  const loadUserAction = async () => {
     const res = await userAPI.loadUser(token);
     if (res.ok) {
       const { token, user } = res.data;
@@ -34,6 +34,7 @@ export const AuthProvider = (props) => {
   // Login User
   const loginAction = async (data) => {
     const res = await userAPI.login(data);
+    console.log(res);
     if (res.ok) {
       const { token, user } = res.data;
       await storeToken(token);
@@ -57,9 +58,9 @@ export const AuthProvider = (props) => {
 
   // Logout
   // TODO: implement Logout
-  const logout = async () => {
+  const logoutAction = async () => {
     await removeToken();
-    dispatch({ type: LOGOUT });
+    dispatch({ type: LOGOUT, payload: { error: null } });
   };
 
   // Clear Errors
@@ -74,9 +75,9 @@ export const AuthProvider = (props) => {
         // loading,
         // register,
         isAuthenticated,
-        loadUser,
+        loadUserAction,
         loginAction,
-        logout
+        logoutAction
         // clearErrors,
         // resetPasswordEmail
       }}

@@ -46,8 +46,8 @@ export const reducer = (state, action) => {
         token: null,
         isAuthenticated: false,
         loading: false,
-        user: null
-        // error: payload.error
+        user: null,
+        error: payload.error
       };
 
     // case CLEAR_ERRORS:
