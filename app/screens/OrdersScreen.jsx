@@ -17,7 +17,7 @@ const OrdersScreen = ({ navigation }) => {
   return (
     <Screen>
       <Order></Order>
-      <Button title="view order" onPress={() => navigation.navigate('OrderDetails')} />
+      {/* <Button title="view order" onPress={() => navigation.navigate('OrderDetails')} /> */}
     </Screen>
   );
 };

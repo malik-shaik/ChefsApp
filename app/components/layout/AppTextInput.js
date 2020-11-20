@@ -16,9 +16,10 @@ export default AppTextInput;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: defaultStyles.colors.primary,
-    borderStyle: "solid",
-    borderWidth: 1,
+    // borderColor: defaultStyles.colors.primary,
+    backgroundColor:defaultStyles.colors.lighter,
+    // borderStyle: "solid",
+    // borderWidth: 1,
     borderRadius: 6,
     flexDirection: "row",
     width: "100%",

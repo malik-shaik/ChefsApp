@@ -7,8 +7,8 @@ const Icon = ({ icon, color, size }) => {
   return (
     <MaterialCommunityIcons
       name={icon}
-      size={size || 20}
-      color={colors[color]}
+      size={size}
+      color={color}
       style={styles.icon}
     />
   );
@@ -18,6 +18,7 @@ export default Icon;
 
 const styles = StyleSheet.create({
   icon: {
-    marginRight: 10
+    // marginTop: 10,
+    // marginBottom: 5
   }
 });

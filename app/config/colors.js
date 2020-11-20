@@ -1,14 +1,18 @@
 export default {
   primary: '#008489',
+  inactivePrimary: 'rgba(0, 132,	137, 0.4)',
   secondary: '#4ecdc4',
   black: '#000',
   white: '#fff',
   medium: '#6e6969',
   light: '#E5E5E5',
+  lighter: 'rgba(239, 237, 2400, 0.4)',
   facebookblue: '#4267B2',
   // light: "#f8f4f4",
   lightGreen: '#EBFCEA',
-  acceptedColor: '#75B79E',
+  accepted: '#AEE5AE',
+  declined: '#F48A8A',
+  pending: '#E8D67E',
   dark: '#0c0c0c',
   danger: '#cb1919'
 };

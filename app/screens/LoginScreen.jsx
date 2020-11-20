@@ -26,7 +26,7 @@ const LoginScreen = () => {
           icon="email"
           keyboardType="email-address"
           name="email"
-          placeholder="Email address"
+          placeholder="E-mail"
           textContentType="emailAddress"
         />
 
@@ -58,7 +58,7 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: { padding: 30 },
+  container: { padding: 20 },
   horizontalLine: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -69,11 +69,11 @@ const styles = StyleSheet.create({
   hairline: {
     backgroundColor: colors.light,
     height: 1.4,
-    width: 135
+    width: '30%'
   },
 
   text: {
-    fontSize: 15,
+    fontSize: 14,
     // paddingHorizontal: 5,
     alignSelf: 'center',
     color: '#A2A2A2'
