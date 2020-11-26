@@ -1,38 +1,66 @@
-import React from 'react';
-import { StyleSheet, Text, Image, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, Image, View, Dimensions } from 'react-native';
 import Card from '../layout/Card';
-import colors from '../../config/colors';
-import avatar from "../../assets/avatar.png";
+import avatar from '../../assets/avatar.png';
 import Icon from '../layout/Icon';
+import colors from '../../config/colors';
+import icons from '../../config/icons';
 
+const window = Dimensions.get('window');
+// TODO: refactor this with all the styles
 
-const Order = (icon) => {
+const Order = ({ order }) => {
+  console.log(order);
+  const imageName = order.customer_image || order.customer_image_default;
+  const imageSrc = `https://res.cloudinary.com/hcogndlqd/image/upload/uploads/${imageName}`;
   return (
-    <Card extraStyles={styles.order}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        <Image style={styles.avatar} source={avatar} />
+    <Card extraStyles={[{ borderLeftColor: colors[order.order_status] }, styles.order]}>
+      <View style={{ flex: 1, flexDirection: 'row', height: 120 }}>
+        <Image style={styles.avatar} source={{ uri: imageSrc }} />
         <View style={styles.nameContainer}>
           <Text style={styles.subtitle}>From</Text>
-          <Text style={styles.name}>Alex Marchal</Text>
+          <Text style={styles.name}>
+            {order.customer_firstname} {order.customer_lastname}
+          </Text>
         </View>
         <View style={styles.statusContainer}>
-          <Text style={styles.subtitle}>Order: XPLK</Text>
-          {icon && <Icon icon='close-circle-outline' color={colors.declined} size={35} />}
+          <Text style={styles.subtitle}>Order: {order.token}</Text>
+          <Icon icon={icons[order.order_status]} color={colors[order.order_status]} size={35} />
         </View>
       </View>
-        <View style={styles.detailsContainer}>
-          {icon && <Icon icon='calendar' color={colors.medium} size={20} />}
-          <Text style={styles.subtitle}>21 October</Text>
-
-          {icon && <Icon icon='clock-outline' color={colors.medium} size={20} />}
-          <Text style={styles.subtitle}>20:30</Text>
-
-          {icon && <Icon icon='account-multiple' color={colors.medium} size={20} />}
-          <Text style={styles.subtitle}>2</Text>
-
-          {icon && <Icon icon='map-marker-outline' color={colors.medium} size={20} />}
-          <Text style={styles.subtitle}>Valby</Text>
+      <View style={styles.detailsContainer}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            width: window.width * 0.3,
+            // backgroundColor: 'blue'
+            marginRight: 10
+          }}
+        >
+          <Icon icon="calendar" color={colors.medium} size={20} />
+          <Text style={styles.subtitle}>{order.order_date}</Text>
         </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            width: '5%'
+            // backgroundColor: 'red'
+          }}
+        >
+          <Icon icon="clock-outline" color={colors.medium} size={20} />
+          <Text style={styles.subtitle}>{order.order_dinner_time}</Text>
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Icon icon="account-multiple" color={colors.medium} size={20} />
+          <Text style={styles.subtitle}>{order.order_people_num}</Text>
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Icon icon="map-marker-outline" color={colors.medium} size={20} />
+          <Text style={styles.subtitle}>{order.order_customer_city}</Text>
+        </View>
+      </View>
     </Card>
   );
 };
@@ -41,48 +69,55 @@ export default Order;
 
 const styles = StyleSheet.create({
   order: {
-    backgroundColor: "white",
+    width: window.width * 0.95,
+    backgroundColor: 'white',
     borderLeftWidth: 8,
-    borderLeftColor: colors.declined,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 2
     },
     shadowOpacity: 0.35,
     shadowRadius: 3.84,
-    elevation: 4,
+    elevation: 4
   },
-  avatar:{
-      height:60,
-      width: 60,
-      marginTop:15,
-      marginLeft:15,
-      marginRight:10,
+  avatar: {
+    height: 60,
+    width: 60,
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 10
   },
   nameContainer: {
     marginTop: 20,
+    // backgroundColor: 'blue',
+    height: '100%'
     // marginRight: 60
     // paddingRight: 20
   },
   subtitle: {
     fontSize: 12,
     fontWeight: '400',
-    color: colors.medium,
+    color: colors.medium
   },
   name: {
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: '700'
   },
 
   statusContainer: {
-    paddingTop: 20,
-    paddingLeft: 40
+    flex: 1,
+    alignItems: 'flex-end',
+    // backgroundColor: 'blue',
+    height: 60,
+    paddingTop: 20
+    // paddingLeft: 40,
+    // paddingLeft: 40
   },
   detailsContainer: {
-    flex: 1, 
+    flex: 1,
     flexDirection: 'row',
-    justifyContent:'space-around',
+    // justifyContent: 'space-between',
     marginTop: 50,
     marginLeft: 20
   }

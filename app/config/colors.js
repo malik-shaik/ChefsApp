@@ -11,8 +11,9 @@ export default {
   // light: "#f8f4f4",
   lightGreen: '#EBFCEA',
   accepted: '#AEE5AE',
-  declined: '#F48A8A',
-  pending: '#E8D67E',
+  confirmed: '#AEE5AE',
+  rejected: '#F48A8A',
+  requested: '#E8D67E', // for peding message
   dark: '#0c0c0c',
   danger: '#cb1919'
 };

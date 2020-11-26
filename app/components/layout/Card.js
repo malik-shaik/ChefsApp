@@ -10,11 +10,12 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
+    padding: 10,
     height: 120,
     width: '90%',
     marginTop: 20,
     borderRadius: 10,
-    backgroundColor: colors.lightGreen,
+    // backgroundColor: colors.lightGreen,
     // backgroundColor: 'gray',
     alignSelf: 'center'
   }

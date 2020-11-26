@@ -18,4 +18,4 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
-export const LOAD_ALL_ORDERS = 'LOAD_ALL_ORDERS';
+export const LOAD_ALL_MESSAGES = 'LOAD_ALL_MESSAGES';

@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import { ordersReducer, ordersState } from './ordersReducer';
 import { errorMessages } from '../../utils';
 import { ordersAPI } from '../../api';
+import { LOAD_ALL_MESSAGES } from '../../utils/actionTypes';
 
 export const OrdersContext = createContext();
 
@@ -13,14 +14,13 @@ export const OrdersProvider = (props) => {
 
   // Load all Orders
   const loadAllOrdersAction = async () => {
-    // TODO: implement this
-    // const res = await ordersAPI.getAllOrders();
-    // console.log(res.data);
-    // if (res.ok) {
-    //     dispatch({ type: LOGIN_SUCCESS, payload: { token, user } });
-    //   } else if ((res.problem = 'CLIENT_ERROR')) {
-    //     dispatch({ type: LOGIN_FAIL, payload: { error: errorMessages.INVALID_USER } });
-    //   }
+    const res = await ordersAPI.getAllOrders();
+    if (res.ok) {
+      dispatch({ type: LOAD_ALL_MESSAGES, payload: { data: res.data } });
+    } else if ((res.problem = 'CLIENT_ERROR')) {
+      console.log('messages loading ERROR !');
+      // dispatch({ type: LOGIN_FAIL, payload: { error: errorMessages.INVALID_USER } });
+    }
   };
 
   // Set One Order

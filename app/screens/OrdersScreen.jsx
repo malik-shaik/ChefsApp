@@ -1,23 +1,29 @@
 import React, { useContext, useEffect } from 'react';
-import { Button, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, FlatList } from 'react-native';
 import Screen from '../components/layout/Screen';
-import { AuthContext } from '../context/auth/authContext';
 import { OrdersContext } from '../context/orders/ordersContext';
 import Order from '../components/orders/Order';
 
 const OrdersScreen = ({ navigation }) => {
   const { allOrders, loadAllOrdersAction } = useContext(OrdersContext);
 
-  // TODO: implement load orders ..
+  // TODO: implement loading icon ..
+
   useEffect(() => {
-    const getAllOrders = async () => await loadAllOrdersAction();
-    getAllOrders();
+    loadAllOrdersAction(); //eslint-disable-next-line
   }, []);
 
   return (
     <Screen>
-      <Order></Order>
-      {/* <Button title="view order" onPress={() => navigation.navigate('OrderDetails')} /> */}
+      {allOrders !== undefined ? (
+        <FlatList
+          data={allOrders}
+          renderItem={({ item }) => <Order order={item} />}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      ) : (
+        <Text>Loading...</Text>
+      )}
     </Screen>
   );
 };
