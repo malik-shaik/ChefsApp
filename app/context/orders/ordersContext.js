@@ -13,12 +13,15 @@ export const OrdersProvider = (props) => {
   /* Actions */
 
   // Load all Orders
-  const loadAllOrdersAction = async () => {
-    const res = await ordersAPI.getAllOrders();
+  const loadAllOrdersAction = async (type) => {
+    const res = await ordersAPI.getAllOrders(type);
     if (res.ok) {
       dispatch({ type: LOAD_ALL_MESSAGES, payload: { data: res.data } });
+      return true;
     } else if ((res.problem = 'CLIENT_ERROR')) {
       console.log('messages loading ERROR !');
+      return false;
+
       // dispatch({ type: LOGIN_FAIL, payload: { error: errorMessages.INVALID_USER } });
     }
   };

@@ -1,13 +1,10 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import {
-  OrdersStackNavigator,
-  TabsNavigator
-} from "../components/layout/navigators";
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { OrdersStackNavigator, BottomTabsNavigator } from '../components/layout/navigators';
 
 const DashboardScreen = () => {
   return (
-    <TabsNavigator />
+    <BottomTabsNavigator />
     //   <OrdersStackNavigator />
   );
 };

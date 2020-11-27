@@ -10,7 +10,7 @@ const window = Dimensions.get('window');
 // TODO: refactor this with all the styles
 
 const Order = ({ order }) => {
-  console.log(order);
+  // console.log(order);
   const imageName = order.customer_image || order.customer_image_default;
   const imageSrc = `https://res.cloudinary.com/hcogndlqd/image/upload/uploads/${imageName}`;
   return (

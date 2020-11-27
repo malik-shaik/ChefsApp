@@ -3,8 +3,8 @@ import { getToken } from '../../context/tokenStorage';
 
 const endpoint = '/messages';
 
-const getAllOrders = async (data) => {
-  const apiUrl = `${endpoint}/all`;
+const getAllOrders = async (type) => {
+  const apiUrl = `${endpoint}/${type}`;
   // api.setHeaders({ 'auth-token': await getToken() });
   api.setHeaders({
     'auth-token':

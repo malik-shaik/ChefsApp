@@ -1,15 +1,15 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import colors from "../../config/colors";
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import colors from '../../config/colors';
 
-const Icon = ({ icon, color, size }) => {
+const Icon = ({ icon, color, size, extraStyles }) => {
   return (
     <MaterialCommunityIcons
       name={icon}
       size={size}
       color={color}
-      style={styles.icon}
+      style={[styles.icon, extraStyles]}
     />
   );
 };
