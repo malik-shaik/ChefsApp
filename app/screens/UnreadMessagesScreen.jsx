@@ -6,29 +6,23 @@ import Order from '../components/orders/Order';
 
 const OrdersScreen = ({ route }) => {
   const type = route.params.type;
-  const { allOrders, loadAllOrdersAction } = useContext(OrdersContext);
+  const { unreadOrders, loadUnreadMessages } = useContext(OrdersContext);
   const [isReady, setIsReady] = useState(false);
-
-  // TODO: implement loading icon ..
 
   useEffect(() => {
     const getOrders = async () => {
-      const loaded = await loadAllOrdersAction(type); //eslint-disable-next-line
-      if (loaded) {
-        setIsReady(true);
-      }
+      const loaded = await loadUnreadMessages(type); //eslint-disable-next-line
+      loaded && setIsReady(true);
     };
 
     getOrders();
-
-    // loadAllOrdersAction(type); //eslint-disable-next-line
   }, []);
 
   return (
     <Screen>
-      {isReady && allOrders !== undefined ? (
+      {isReady && unreadOrders !== undefined ? (
         <FlatList
-          data={allOrders}
+          data={unreadOrders}
           renderItem={({ item }) => <Order order={item} />}
           keyExtractor={(item) => item.id.toString()}
         />

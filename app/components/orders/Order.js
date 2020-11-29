@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, Image, View, Dimensions } from 'react-native';
 import Card from '../layout/Card';
-import avatar from '../../assets/avatar.png';
 import Icon from '../layout/Icon';
 import colors from '../../config/colors';
 import icons from '../../config/icons';
@@ -10,9 +9,9 @@ const window = Dimensions.get('window');
 // TODO: refactor this with all the styles
 
 const Order = ({ order }) => {
-  // console.log(order);
   const imageName = order.customer_image || order.customer_image_default;
   const imageSrc = `https://res.cloudinary.com/hcogndlqd/image/upload/uploads/${imageName}`;
+
   return (
     <Card extraStyles={[{ borderLeftColor: colors[order.order_status] }, styles.order]}>
       <View style={{ flex: 1, flexDirection: 'row', height: 120 }}>
@@ -34,21 +33,13 @@ const Order = ({ order }) => {
             flex: 1,
             flexDirection: 'row',
             width: window.width * 0.3,
-            // backgroundColor: 'blue'
             marginRight: 10
           }}
         >
           <Icon icon="calendar" color={colors.medium} size={20} />
           <Text style={styles.subtitle}>{order.order_date}</Text>
         </View>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            width: '5%'
-            // backgroundColor: 'red'
-          }}
-        >
+        <View style={{ flex: 1, flexDirection: 'row', width: '5%' }}>
           <Icon icon="clock-outline" color={colors.medium} size={20} />
           <Text style={styles.subtitle}>{order.order_dinner_time}</Text>
         </View>
@@ -84,6 +75,7 @@ const styles = StyleSheet.create({
   avatar: {
     height: 60,
     width: 60,
+    borderRadius: 50,
     marginTop: 15,
     marginLeft: 15,
     marginRight: 10

@@ -25,11 +25,6 @@ const BottomTabsNavigator = () => {
 
   return (
     <Tab.Navigator
-      // tabBarOptions={{
-      //   activeTintColor: colors.primary,
-      //   inactiveTintColor: colors.inactivePrimary,
-      // }}
-
       initialRouteName="Messages"
       activeColor={colors.primary}
       inactiveColor={colors.inactivePrimary}
@@ -38,7 +33,6 @@ const BottomTabsNavigator = () => {
       <Tab.Screen
         name="Messages"
         component={TopTabsNavigator}
-        // component={OrdersStackNavigator}
         options={{
           tabBarIcon: ({ color }) => <Icon icon={messages} size={size} color={color} />,
           tabBarBadge: badgeNumber > 0 ? badgeNumber : null

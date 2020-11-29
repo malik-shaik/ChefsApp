@@ -18,7 +18,7 @@ export default Icon;
 
 const styles = StyleSheet.create({
   icon: {
-    // marginTop: 10,
+    // margin: 5
     // marginBottom: 5
   }
 });

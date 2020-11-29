@@ -1,8 +1,16 @@
 // TODO: implement orders reducer
-import { LOAD_ALL_MESSAGES } from '../../utils/actionTypes';
+import {
+  LOAD_ALL_MESSAGES,
+  LOAD_CONFIRMED_MESSAGES,
+  LOAD_UNREAD_MESSAGES,
+  LOAD_PENDING_MESSAGES
+} from '../../utils/actionTypes';
 
 export const ordersState = {
   allOrders: undefined,
+  unreadOrders: undefined,
+  pendingOrders: undefined,
+  confirmedOrders: undefined,
   oneOrder: null
 };
 
@@ -12,10 +20,16 @@ export const ordersReducer = (state, action) => {
 
   switch (type) {
     case LOAD_ALL_MESSAGES:
-      return {
-        ...state,
-        allOrders: payload.data
-      };
+      return { ...state, allOrders: payload.data };
+
+    case LOAD_CONFIRMED_MESSAGES:
+      return { ...state, confirmedOrders: payload.data };
+
+    case LOAD_PENDING_MESSAGES:
+      return { ...state, pendingOrders: payload.data };
+
+    case LOAD_UNREAD_MESSAGES:
+      return { ...state, unreadOrders: payload.data };
 
     default:
       return state;

@@ -5,24 +5,11 @@ import colors from '../../../config/colors';
 import Screen from '../Screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OrdersScreen from '../../../screens/OrdersScreen';
+import OrdersScreen1 from '../../../screens/OrdersScreen1';
+import ConfirmedMessagesScreen from '../../../screens/ConfirmedMessagesScreen';
+import UnreadMessagesScreen from '../../../screens/UnreadMessagesScreen';
 
 const Tab = createMaterialTopTabNavigator();
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
 
 const TopTabsNavigator = () => {
   return (
@@ -35,6 +22,7 @@ const TopTabsNavigator = () => {
           labelStyle: {
             fontSize: 12,
             fontWeight: '700',
+            textTransform: 'none',
             width: 100
           }
           // tabStyle: { width: 100 }
@@ -43,19 +31,22 @@ const TopTabsNavigator = () => {
           backgroundColor: 'white'
         }}
       >
-        {/* <Tab.Screen name="All" component={() => renderComponent(OrdersScreen, 'all')} /> */}
-        {/* <Tab.Screen name="All" component={() => <OrdersScreen type="all" />} /> */}
         <Tab.Screen name="All" component={OrdersScreen} initialParams={{ type: 'all' }} />
-        <Tab.Screen name="Unread" component={OrdersScreen} initialParams={{ type: 'all' }} />
-        <Tab.Screen name="Pending" component={OrdersScreen} initialParams={{ type: 'Pending' }} />
+        <Tab.Screen
+          name="Pending"
+          component={OrdersScreen1}
+          initialParams={{ type: 'requested' }}
+        />
+        <Tab.Screen
+          name="Unread"
+          component={UnreadMessagesScreen}
+          initialParams={{ type: 'unread' }}
+        />
         <Tab.Screen
           name="Confirmed"
-          component={OrdersScreen}
-          initialParams={{ type: 'Confirmed' }}
+          component={ConfirmedMessagesScreen}
+          initialParams={{ type: 'confirmed' }}
         />
-        {/* <Tab.Screen name="Unread" component={SettingsScreen} />
-        <Tab.Screen name="Pending" component={SettingsScreen} />
-        <Tab.Screen name="Confirmed" component={SettingsScreen} /> */}
       </Tab.Navigator>
     </SafeAreaView>
   );
