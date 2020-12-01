@@ -5,7 +5,8 @@ import {
   LOAD_ALL_MESSAGES,
   LOAD_CONFIRMED_MESSAGES,
   LOAD_PENDING_MESSAGES,
-  LOAD_UNREAD_MESSAGES
+  LOAD_UNREAD_MESSAGES,
+  SET_ONE_ORDER
 } from '../../utils/actionTypes';
 
 export const OrdersContext = createContext();
@@ -51,8 +52,17 @@ export const OrdersProvider = (props) => {
   };
 
   // Set One Order
-  const setOneOrderAction = () => {
+  const setOneOrderAction = (token) => {
     // TODO: implement this
+    const res = ordersAPI.getOneOrder(token);
+    if (res.ok) {
+      console.log('ORDER : ', res.data);
+      // dispatch({ type: SET_ONE_ORDER, payload: { data: res.data } });
+      return true;
+    } else if ((res.problem = 'CLIENT_ERROR')) {
+      console.log('messages loading ERROR !');
+      return false;
+    }
   };
 
   return (

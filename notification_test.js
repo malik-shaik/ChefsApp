@@ -5,16 +5,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, Button, Platform } from 'react-native';
 import { setNotifications, registerNotifications } from './app/Notifications';
 
-setNotifications();
+// setNotifications();
 // registerNotifications();
 
-// Notifications.setNotificationHandler({
-//   handleNotification: async () => ({
-//     shouldShowAlert: true,
-//     shouldPlaySound: true,
-//     shouldSetBadge: true
-//   })
-// });
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true
+  })
+});
 
 export default function App() {
   const [expoPushToken, setExpoPushToken] = useState('');

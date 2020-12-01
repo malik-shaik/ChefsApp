@@ -8,13 +8,28 @@ const getAllOrders = async (type) => {
   // api.setHeaders({ 'auth-token': await getToken() });
   api.setHeaders({
     'auth-token':
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI5ODEsImlhdCI6MTYwNjM4NTMzOCwiZXhwIjoxNjA2NzQ1MzM4fQ.KKCpAz1QRJ59NF-_Ed12-dT67Oe5Gzy_ygTjuhTrycw'
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMyNTUsImlhdCI6MTYwNjczNzgyMCwiZXhwIjoxNjA3MDk3ODIwfQ.4wmwOfiXXHEmu1IJaTINRLui4Bl7XMMc_OgacfjFxhs'
   });
-  return await api.get(apiUrl);
+
+  const result = await api.get(apiUrl);
+  // console.log('API : ', result);
+  return result;
 };
 
-const getOneOrder = async (data) => {
+const getOneOrder = async (token) => {
   // TODO: implement this
+  token = 'KDLSH';
+  const apiUrl = `/orders/${token}`;
+  // api.setHeaders({ 'auth-token': await getToken() });
+  api.setHeaders({
+    'auth-token':
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMyNTUsImlhdCI6MTYwNjczNzgyMCwiZXhwIjoxNjA3MDk3ODIwfQ.4wmwOfiXXHEmu1IJaTINRLui4Bl7XMMc_OgacfjFxhs'
+  });
+
+  const result = await api.get(apiUrl);
+  console.log('ONE ORDER : ', result);
+
+  return result;
 };
 
 export default { getAllOrders, getOneOrder };
