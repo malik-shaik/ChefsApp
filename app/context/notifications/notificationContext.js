@@ -11,18 +11,14 @@ export const NotificationProvider = (props) => {
   /* Actions */
 
   // Set Badge number
-  const setBadgeNumber = async () => {
-    //   const res = await ordersAPI.getAllOrders();
-    //   if (res.ok) {
-    //     dispatch({ type: LOAD_ALL_MESSAGES, payload: { data: res.data } });
-    //   } else if ((res.problem = 'CLIENT_ERROR')) {
-    //     console.log('messages loading ERROR !');
-    //     // dispatch({ type: LOGIN_FAIL, payload: { error: errorMessages.INVALID_USER } });
-    //   }
+  const setBadgeNumberAction = async (badge) => {
+    // TODO : implement this
+    console.log('BADGE: ', badge);
+    dispatch({ type: SET_BADGE_NUMBER, payload: { badge } });
   };
 
   return (
-    <NotificationContext.Provider value={{ badgeNumber, setBadgeNumber }}>
+    <NotificationContext.Provider value={{ badgeNumber, setBadgeNumberAction }}>
       {props.children}
     </NotificationContext.Provider>
   );

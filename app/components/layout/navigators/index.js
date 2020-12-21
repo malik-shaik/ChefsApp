@@ -1,3 +1,3 @@
 export { default as BottomTabsNavigator } from './BottomTabsNavigator';
 export { default as OrdersStackNavigator } from './OrdersStackNavigator';
-import { default as TopTabsNavigator } from './TopTabsNavigator';
+export { default as TopTabsNavigator } from './TopTabsNavigator';

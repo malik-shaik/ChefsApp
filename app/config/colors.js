@@ -15,5 +15,6 @@ export default {
   rejected: '#F48A8A',
   requested: '#E8D67E', // for peding message
   dark: '#0c0c0c',
-  danger: '#cb1919'
+  danger: '#cb1919',
+  iconColor: 'rgba(0,0,0,0.4)'
 };

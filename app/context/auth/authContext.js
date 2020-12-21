@@ -16,15 +16,16 @@ export const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
   const [authData, dispatch] = useReducer(reducer, authState);
-  const { token, isAuthenticated, loading, error, user } = authData;
+  const { isAuthenticated, loading, error, user } = authData;
 
   /* Actions */
   // Load User
   const loadUserAction = async () => {
+    const token = await getToken();
     const res = await userAPI.loadUser(token);
     if (res.ok) {
       const { token, user } = res.data;
-      await storeToken(token);
+      // await storeToken(token);
       dispatch({ type: USER_LOADED, payload: { token, user } });
     } else if ((res.problem = 'CLIENT_ERROR')) {
       dispatch({ type: AUTH_ERROR, payload: { error: errorMessages.INVALID_USER } });
@@ -33,6 +34,16 @@ export const AuthProvider = (props) => {
 
   // Login User
   const loginAction = async (data) => {
+    // console.log('login clicked');
+    // const options = {
+    //   method: 'POST',
+    //   headers: { 'Content-type': 'application/json' },
+    //   body: JSON.stringify(data)
+    // };
+    // const res = await fetch('http://localhost:5000/users/login', options);
+    // console.log(res.status);
+    // const data1 = await res.json();
+    // console.log(data1);
     const res = await userAPI.login(data);
     console.log(res);
     if (res.ok) {
@@ -40,6 +51,7 @@ export const AuthProvider = (props) => {
       await storeToken(token);
       dispatch({ type: LOGIN_SUCCESS, payload: { token, user } });
     } else if ((res.problem = 'CLIENT_ERROR')) {
+      console.log(res);
       dispatch({ type: LOGIN_FAIL, payload: { error: errorMessages.INVALID_USER } });
     }
   };

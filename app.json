@@ -28,6 +28,9 @@
         "appName": "chefsapp"
       }
     },
-    "description": ""
+    "description": "",
+    "android": {
+      "useNextNotificationsApi": true
+    }
   }
 }

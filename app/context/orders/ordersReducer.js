@@ -1,9 +1,9 @@
-// TODO: implement orders reducer
 import {
   LOAD_ALL_MESSAGES,
   LOAD_CONFIRMED_MESSAGES,
   LOAD_UNREAD_MESSAGES,
-  LOAD_PENDING_MESSAGES
+  LOAD_PENDING_MESSAGES,
+  SET_ONE_ORDER
 } from '../../utils/actionTypes';
 
 export const ordersState = {
@@ -30,6 +30,9 @@ export const ordersReducer = (state, action) => {
 
     case LOAD_UNREAD_MESSAGES:
       return { ...state, unreadOrders: payload.data };
+
+    case SET_ONE_ORDER:
+      return { ...state, oneOrder: payload.data };
 
     default:
       return state;

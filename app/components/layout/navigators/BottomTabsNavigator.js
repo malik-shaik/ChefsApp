@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import * as Notifications from 'expo-notifications';
+
 import { StyleSheet } from 'react-native';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -11,6 +13,7 @@ import ProfileScreen from '../../../screens/ProfileScreen';
 import icons from '../../../config/icons';
 import { NotificationContext } from '../../../context/notifications/notificationContext';
 import TopTabsNavigator from './TopTabsNavigator';
+import MessagesScreen from '../../../screens/MessagesScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 // const Tab = createBottomTabNavigator();
@@ -19,7 +22,7 @@ const BottomTabsNavigator = () => {
   const { menus, messages, profile, wallet } = icons;
   const size = 26;
 
-  const { badgeNumber } = useContext(NotificationContext);
+  const { badgeNumber, setBadgeNumberAction } = useContext(NotificationContext);
 
   console.log('Badge number:  ', badgeNumber);
 
@@ -32,10 +35,19 @@ const BottomTabsNavigator = () => {
     >
       <Tab.Screen
         name="Messages"
-        component={TopTabsNavigator}
+        // component={TopTabsNavigator}
+        component={MessagesScreen}
         options={{
           tabBarIcon: ({ color }) => <Icon icon={messages} size={size} color={color} />,
           tabBarBadge: badgeNumber > 0 ? badgeNumber : null
+        }}
+        listeners={{
+          tabPress: async (e) => {
+            // e.preventDefault(); // Use this to navigate somewhere else
+            console.log('Foo tab bar button pressed');
+            await setBadgeNumberAction(0);
+            await Notifications.setBadgeCountAsync(0);
+          }
         }}
       />
       <Tab.Screen

@@ -17,6 +17,8 @@ export const OrdersProvider = (props) => {
 
   /* Actions */
 
+  // FIX: create context for messages and orders
+
   // Load all Orders
   const loadAllOrdersAction = async (type) => {
     const res = await ordersAPI.getAllOrders(type);
@@ -33,7 +35,7 @@ export const OrdersProvider = (props) => {
       }
       return true;
     } else if ((res.problem = 'CLIENT_ERROR')) {
-      console.log('messages loading ERROR !');
+      console.log('messages loading ERROR !', res);
       return false;
     }
   };
@@ -52,16 +54,32 @@ export const OrdersProvider = (props) => {
   };
 
   // Set One Order
-  const setOneOrderAction = (token) => {
+  const loadOneOrderAction = async (token) => {
     // TODO: implement this
-    const res = ordersAPI.getOneOrder(token);
+    console.log(token);
+    const res = await ordersAPI.getOneOrder(token);
     if (res.ok) {
       console.log('ORDER : ', res.data);
-      // dispatch({ type: SET_ONE_ORDER, payload: { data: res.data } });
+      dispatch({ type: SET_ONE_ORDER, payload: { data: res.data } });
       return true;
     } else if ((res.problem = 'CLIENT_ERROR')) {
-      console.log('messages loading ERROR !');
+      console.log('order loading ERROR ! :', res);
       return false;
+    }
+  };
+
+  const respondOrderAction = async (token, type) => {
+    const res = await ordersAPI.respondOrder(token, type);
+
+    if (res.ok) {
+      console.log('MESSAGE : ', res.data);
+      const types = ['all', 'requested', 'confirmed'];
+      types.forEach(async (type) => await loadAllOrdersAction(type));
+      await loadUnreadMessages('unread');
+      await loadOneOrderAction(token);
+      return res.data;
+    } else if ((res.problem = 'CLIENT_ERROR')) {
+      console.log('SOME ERROR FROM SERVER :', res);
     }
   };
 
@@ -75,7 +93,8 @@ export const OrdersProvider = (props) => {
         oneOrder,
         loadUnreadMessages,
         loadAllOrdersAction,
-        setOneOrderAction
+        loadOneOrderAction,
+        respondOrderAction
       }}
     >
       {props.children}
