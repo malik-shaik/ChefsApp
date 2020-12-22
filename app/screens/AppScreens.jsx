@@ -25,7 +25,7 @@ const AppScreens = () => {
           <DashboardScreen />
         </NavigationContainer>
       )} */}
-      {!isAuthenticated ? (
+      {isAuthenticated ? (
         <NavigationContainer>
           <DashboardScreen />
         </NavigationContainer>

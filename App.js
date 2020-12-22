@@ -65,7 +65,7 @@ const App = () => {
         <NotificationProvider>
           <AuthProvider>
             <OrdersProvider>
-              <PushNotifications />
+              {/* <PushNotifications /> */}
               <AppScreens />
             </OrdersProvider>
           </AuthProvider>

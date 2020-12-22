@@ -14,6 +14,7 @@ import icons from '../../../config/icons';
 import { NotificationContext } from '../../../context/notifications/notificationContext';
 import TopTabsNavigator from './TopTabsNavigator';
 import MessagesScreen from '../../../screens/MessagesScreen';
+import ProfileStackNavigator from '../../user/ProfileStackNavigator';
 
 const Tab = createMaterialBottomTabNavigator();
 // const Tab = createBottomTabNavigator();
@@ -66,7 +67,7 @@ const BottomTabsNavigator = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackNavigator}
         options={{
           tabBarIcon: ({ color }) => <Icon icon={profile} size={size} color={color} />
         }}

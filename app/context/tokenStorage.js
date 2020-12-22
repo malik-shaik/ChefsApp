@@ -12,7 +12,7 @@ const storeToken = async (authToken) => {
 
 const getToken = async () => {
   try {
-    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM0MDAsImlhdCI6MTYwODU0OTg3OSwiZXhwIjoxNjA4OTA5ODc5fQ.8m-rN1eDtXSAvW0HGqgOk4OX6p-_43YMAG8532OfRtk';
+    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI5NzAsImlhdCI6MTYwODY1NjM1MiwiZXhwIjoxNjA5MDE2MzUyfQ.sexnd80z3rfBgZMTOMqsYFo5D-v_E1SzdBZoON-M-uQ';
     return await SecureStore.getItemAsync(key);
   } catch (error) {
     console.log('Error getting the auth token', error);

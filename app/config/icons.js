@@ -12,7 +12,11 @@ export default {
   clock: 'clock-outline',
   guests: 'account-multiple',
   location: 'map-marker-outline',
-  money: 'credit-card-outline'
+  money: 'credit-card-outline',
+  user: 'account-outline',
+  rightArrow: 'chevron-right',
+  lock: 'lock-outline',
+  logout: 'logout'
   // requested: 'clock-outline',
   // rejected: 'close-circle-outline',
 };
