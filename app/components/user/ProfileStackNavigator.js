@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ProfileScreen from '../../screens/ProfileScreen';
 import PersonalDetailsScreen from '../../screens/PersonalDetailsScreen';
 import SecurityDetailsScreen from '../../screens/SecurityDetailsScreen';
+import colors from '../../config/colors';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +23,8 @@ const ProfileStackNavigator = () => {
         options={({ route }) => ({
           // title: `Order: ${route.params.order.token}`,
           headerBackTitleVisible: false,
-          // headerTintColor: colors.primary,
+          headerTitle: false,
+          headerTintColor: colors.primary,
           cardStyle: { backgroundColor: 'white' }
         })}
       />

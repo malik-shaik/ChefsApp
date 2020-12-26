@@ -28,6 +28,7 @@ const LoginScreen = () => {
           name="email"
           placeholder="E-mail"
           textContentType="emailAddress"
+          extraStyles={styles.formfield}
         />
 
         <AppFormField
@@ -38,6 +39,7 @@ const LoginScreen = () => {
           placeholder="Password"
           secureTextEntry={true}
           textContentType="password"
+          extraStyles={styles.formfield}
         />
 
         <SubmitButton title="Log ind" />
@@ -77,5 +79,11 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 5,
     alignSelf: 'center',
     color: '#A2A2A2'
+  },
+  formfield: {
+    borderColor: colors.primary,
+    // backgroundColor: defaultStyles.colors.lighter,
+    borderStyle: 'solid',
+    borderWidth: 1
   }
 });

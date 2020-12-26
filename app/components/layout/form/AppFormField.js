@@ -6,11 +6,13 @@ import ErrorMessage from './ErrorMessage';
 
 const AppFormField = ({ name, ...otherProps }) => {
   const { setFieldTouched, handleChange, errors, touched } = useFormikContext();
+
   return (
     <>
       <AppTextInput
         onBlur={() => setFieldTouched(name)}
         onChangeText={handleChange(name)}
+        // onChangeText={(text) => changeText(text)}
         {...otherProps}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />

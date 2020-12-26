@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { AppLoading } from 'expo';
 import AppScreens from './app/screens/AppScreens';
 import { AuthProvider } from './app/context/auth/authContext';
@@ -84,3 +85,5 @@ const App = () => {
 };
 
 export default App;
+
+const styles = StyleSheet.create({});

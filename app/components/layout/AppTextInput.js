@@ -4,11 +4,15 @@ import defaultStyles from '../../config/styles';
 import Icon from '../layout/Icon';
 import colors from '../../config/colors';
 
-const AppTextInput = ({ icon, ...otherProps }) => {
+const AppTextInput = ({ icon, extraStyles, ...otherProps }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, extraStyles]}>
       {icon && <Icon icon={icon} size={20} color={colors.medium} />}
-      <TextInput style={[defaultStyles.text, { marginLeft: 2 }]} {...otherProps} />
+      <TextInput
+        style={[defaultStyles.text, { marginLeft: 2 }]}
+        returnKeyType="done"
+        {...otherProps}
+      />
     </View>
   );
 };
@@ -18,10 +22,7 @@ export default AppTextInput;
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    borderColor: defaultStyles.colors.primary,
-    // backgroundColor: defaultStyles.colors.lighter,
-    borderStyle: 'solid',
-    borderWidth: 1,
+
     borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',

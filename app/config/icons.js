@@ -16,7 +16,9 @@ export default {
   user: 'account-outline',
   rightArrow: 'chevron-right',
   lock: 'lock-outline',
-  logout: 'logout'
+  logout: 'logout',
+  pencil: 'pencil-outline',
+  close: 'window-close'
   // requested: 'clock-outline',
   // rejected: 'close-circle-outline',
 };

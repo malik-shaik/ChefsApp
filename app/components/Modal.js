@@ -3,7 +3,7 @@ import { Alert, Modal, StyleSheet, Text, View } from 'react-native';
 import colors from '../config/colors';
 import AppButton from './layout/AppButton';
 
-const AppModal = ({ modalVisible, closeModal, handleOrder, responseMessage, orderAction }) => {
+const OrderModal = ({ modalVisible, closeModal, handleOrder, responseMessage, orderAction }) => {
   console.log(orderAction);
   return (
     <Modal
@@ -47,7 +47,7 @@ const AppModal = ({ modalVisible, closeModal, handleOrder, responseMessage, orde
   );
 };
 
-export default AppModal;
+export default OrderModal;
 
 const styles = StyleSheet.create({
   centeredView: {

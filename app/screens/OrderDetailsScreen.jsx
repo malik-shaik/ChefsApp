@@ -28,7 +28,7 @@ const OrderDetailsScreen = ({ route }) => {
     const loadOrder = async () => {
       const orderLoaded = await loadOneOrderAction(orderToken);
       if (orderLoaded && order) {
-        console.log(order.token, '  ', order.status);
+        // console.log(order.token, '  ', order.status);
         const imageName = order.image_custom || order.image_default;
         setImageSrc(getImageSrc(imageName));
       }
