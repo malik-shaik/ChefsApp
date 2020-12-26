@@ -11,12 +11,7 @@ const Stack = createStackNavigator();
 const ProfileStackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Profile"
-        component={ProfileScreen}
-        // initialParams={{ type: 'all' }}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       <Stack.Screen
         name="Personal details"
         component={PersonalDetailsScreen}
