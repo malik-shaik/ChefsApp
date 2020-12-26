@@ -6,7 +6,6 @@ import ProfileImage from '../components/user/ProfileImage';
 import PersonalDetailsScreen from './PersonalDetailsScreen';
 import { useNavigation } from '@react-navigation/native';
 
-import HorizontalLine from '../components/layout/HorizontalLine';
 import ProfileDetails from '../components/user/ProfileDetails';
 import icons from '../config/icons';
 import colors from '../config/colors';
