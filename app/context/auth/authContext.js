@@ -3,7 +3,6 @@ import { reducer, authState } from './authReducer';
 import { errorMessages } from '../../utils';
 import {
   AUTH_ERROR,
-  CLEAR_ERRORS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
@@ -16,10 +15,10 @@ export const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
   const [authData, dispatch] = useReducer(reducer, authState);
-  const { isAuthenticated, loading, error, user } = authData;
+  const { isAuthenticated, error, user } = authData;
 
   /* Actions */
-  // Load User
+  // Load User Action
   const loadUserAction = async () => {
     const token = await getToken();
     const res = await userAPI.loadUser(token);
@@ -32,7 +31,7 @@ export const AuthProvider = (props) => {
     }
   };
 
-  // Login User
+  // Login User Action
   const loginAction = async (data) => {
     // console.log('login clicked');
     // const options = {
@@ -56,42 +55,36 @@ export const AuthProvider = (props) => {
     }
   };
 
-  //Forgot password
-  const resetPasswordEmail = async (email) => {
-    // const options = {
-    //   method: "POST",
-    //   body: JSON.stringify({ email }),
-    //   headers: { "Content-Type": "application/json" },
-    // };
-    // const res = await fetch("/api/users/forgotpassword", options);
-    // const data = await res.json();
-    // console.log(data);
+  // Profile Update Action
+  const profileUpdateAction = async (data) => {
+    const res = await userAPI.updateProfile(data);
+    if (res.ok) {
+      const { user, message } = res.data;
+      console.log('RESPONSE DATA:', res.data);
+      dispatch({ type: USER_LOADED, payload: { user } });
+      return message;
+    } else if ((res.problem = 'CLIENT_ERROR')) {
+      console.log(res);
+      return false;
+    }
   };
 
-  // Logout
-  // TODO: implement Logout
+  // Logout Action
   const logoutAction = async () => {
     await removeToken();
     dispatch({ type: LOGOUT, payload: { error: null } });
   };
 
-  // Clear Errors
-  //   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
-
   return (
     <AuthContext.Provider
       value={{
         user,
-        // token,
         error,
-        // loading,
-        // register,
         isAuthenticated,
         loadUserAction,
         loginAction,
-        logoutAction
-        // clearErrors,
-        // resetPasswordEmail
+        logoutAction,
+        profileUpdateAction
       }}
     >
       {props.children}

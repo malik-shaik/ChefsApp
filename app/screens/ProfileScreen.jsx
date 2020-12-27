@@ -1,19 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet } from 'react-native';
 import Screen from '../components/layout/Screen';
 import { AuthContext } from '../context/auth/authContext';
 import ProfileImage from '../components/user/ProfileImage';
-import PersonalDetailsScreen from './PersonalDetailsScreen';
-import { useNavigation } from '@react-navigation/native';
 
 import ProfileDetails from '../components/user/ProfileDetails';
 import icons from '../config/icons';
 import colors from '../config/colors';
 
 const ProfileScreen = () => {
-  const { user, logoutAction } = useContext(AuthContext);
-
-  const navigation = useNavigation();
+  const { user } = useContext(AuthContext);
 
   return (
     <Screen>
@@ -36,13 +32,6 @@ const ProfileScreen = () => {
         text="Logout"
         extraStyles={styles.logout}
       />
-
-      {/* <Button
-        onPress={logoutAction}
-        title="Logout"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      /> */}
     </Screen>
   );
 };

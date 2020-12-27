@@ -18,13 +18,6 @@ const AppScreens = () => {
 
   return (
     <>
-      {/* {isAuthenticated ? (
-        <LoginScreen />
-      ) : (
-        <NavigationContainer>
-          <DashboardScreen />
-        </NavigationContainer>
-      )} */}
       {isAuthenticated ? (
         <NavigationContainer>
           <DashboardScreen />

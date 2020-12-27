@@ -1,20 +1,20 @@
-// export default {
-//   INVALID_USER: 'Ingen bruger med denne email. Hvis du vil logge ind med facebook eller blive kok.',
-//   EMAIL_REQUIRED: '* E-mail mangler.',
-//   INVALID_EMAIL: '* Indtast gyldig e-mail',
-//   PASSWORD_REQUIRED: '* Kodeord mangler.',
-//   INVALID_PASSWORD: '* Kodeord skal indeholde mindst 4 tegn'
-// };
 export default {
-  INVALID_USER: 'User name and password doesnt match',
+  CITY_REQUIRED: '* City required.',
   EMAIL_REQUIRED: '* E-mail required.',
-  INVALID_EMAIL: '* Invalid e-mail address',
-  PASSWORD_REQUIRED: '* Password required.',
-  INVALID_PASSWORD: '* Password must be 4 letters',
   FIRSTNAME_REQUIRED: '* Firstname required.',
-  INVALID_FIRSTNAME: '* Invalid firstname',
   LASTNAME_REQUIRED: '* Lastname required.',
+  PASSWORD_REQUIRED: '* Password required.',
   PHONENUMBER_REQUIRED: '* Phone number required.',
+  POSTALCODE_REQUIRED: '* Postal code required.',
+  STREET_REQUIRED: '* Street required.',
+
+  INVALID_CITY: '* City must be more than 2 charecters.',
+  INVALID_STREET: '* Street must be more than 2 charecters.',
+  INVALID_POSTAL: '* Invalid postal code.',
+  INVALID_USER: 'User name and password doesnt match',
+  INVALID_EMAIL: '* Invalid e-mail address',
+  INVALID_PASSWORD: '* Password must be 4 letters',
+  INVALID_FIRSTNAME: '* Invalid firstname',
   INVALID_LASTNAME: '* Invalid lastname',
   INVALID_PHONENUMBER: '* Invalid phone number'
 };

@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#BBBBBB'
-    // marginBottom: 15
   },
   data: {
     color: 'rgba(0, 0, 0, 0.8)',

@@ -1,102 +1,138 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal, TouchableOpacity } from 'react-native';
+import {
+  View,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Platform,
+  Text,
+  TouchableOpacity,
+  Modal
+} from 'react-native';
+import { Formik } from 'formik';
 import Icon from '../layout/Icon';
 import icons from '../../config/icons';
 import colors from '../../config/colors';
-import AppForm from '../layout/form/AppForm';
-import AppFormField from '../layout/form/AppFormField';
-import { validationSchemas } from '../../utils';
+import validationSchemas from '../../utils/validationSchemas';
 import ProfileInfo from './ProfileInfo';
 import SubmitButton from '../layout/form/SubmitButton';
-import { Formik } from 'formik';
 
-const ProfileModal = ({ modalVisible, closeModal, data }) => {
-  const { firstname, lastname, email, phone } = data;
+const ProfileModal = ({
+  modalVisible,
+  closeModal,
+  data,
+  responseMessage,
+  handleProfileUpdate,
+  formType
+}) => {
+  const { firstname, lastname, email, phone, street, city, postal } = data;
+
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          <TouchableOpacity style={styles.close} onPress={closeModal}>
-            <Icon icon={icons.close} size={30} color={colors.medium} extraStyles={styles.close} />
-          </TouchableOpacity>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}
+      >
+        <View style={styles.inner}>
+          <View style={styles.modalView}>
+            <TouchableOpacity style={styles.close} onPress={closeModal}>
+              <Icon icon={icons.close} size={30} color={colors.medium} extraStyles={styles.close} />
+            </TouchableOpacity>
 
-          {/* <AppForm
-            initialValues={{ firstname }}
-            onSubmit={(data) => console.log('FORM DATA:', data)}
-            validationSchema={validationSchemas.profileUpdateValidationSchema}
-          >
-            <ProfileInfo
-              title="First name"
-              data={firstname}
-              editable={true}
-              inputValue={values.firstname}
-            />
+            {responseMessage ? (
+              <Text>{responseMessage}</Text>
+            ) : (
+              <Formik
+                initialValues={{ firstname, lastname, email, phone, street, city, postal }}
+                onSubmit={(data) => handleProfileUpdate(data)}
+                validationSchema={validationSchemas.profileUpdateValidationSchema}
+              >
+                {({ values }) => (
+                  <>
+                    {formType === 'personaldetails' ? (
+                      <>
+                        <ProfileInfo
+                          title="First name"
+                          inputFieldName="firstname"
+                          data={firstname}
+                          editable={true}
+                          inputValue={values.firstname}
+                        />
+                        <ProfileInfo
+                          title="Last name"
+                          inputFieldName="lastname"
+                          data={lastname}
+                          editable={true}
+                          inputValue={values.lastname}
+                        />
+                        <ProfileInfo
+                          title="Email"
+                          inputFieldName="email"
+                          data={email}
+                          editable={true}
+                          inputValue={values.email}
+                        />
+                        <ProfileInfo
+                          title="Phone number"
+                          inputFieldName="phone"
+                          data={phone}
+                          keyboardType="number-pad"
+                          editable={true}
+                          inputValue={values.phone}
+                          extraStyles={{ marginBottom: 20 }}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <ProfileInfo
+                          title="Street"
+                          inputFieldName="street"
+                          data={street}
+                          editable={true}
+                          inputValue={values.street}
+                        />
+                        <ProfileInfo
+                          title="Post number"
+                          inputFieldName="postal"
+                          data={postal}
+                          editable={true}
+                          inputValue={values.postal}
+                        />
+                        <ProfileInfo
+                          title="City"
+                          inputFieldName="city"
+                          data={city}
+                          editable={true}
+                          inputValue={values.city}
+                          extraStyles={{ marginBottom: 20 }}
+                        />
+                      </>
+                    )}
 
-            <SubmitButton title="Save" />
-        </AppForm> */}
-
-          <Formik
-            initialValues={{ firstname, lastname, email, phone }}
-            onSubmit={(data) => console.log('FORM DATA:', data)}
-            validationSchema={validationSchemas.profileUpdateValidationSchema}
-          >
-            {({ values }) => (
-              <>
-                <ProfileInfo
-                  title="First name"
-                  inputFieldName="firstname"
-                  data={firstname}
-                  editable={true}
-                  inputValue={values.firstname}
-                />
-                <ProfileInfo
-                  title="Last name"
-                  inputFieldName="lastname"
-                  data={lastname}
-                  editable={true}
-                  inputValue={values.lastname}
-                />
-                <ProfileInfo
-                  title="Email"
-                  inputFieldName="email"
-                  data={email}
-                  editable={true}
-                  inputValue={values.email}
-                />
-                <ProfileInfo
-                  title="Phone number"
-                  inputFieldName="phone"
-                  data={phone}
-                  keyboardType="number-pad"
-                  editable={true}
-                  inputValue={values.phone}
-                />
-
-                <SubmitButton title="Save" />
-              </>
+                    <SubmitButton title="Update" />
+                  </>
+                )}
+              </Formik>
             )}
-          </Formik>
+          </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 };
 
-export default ProfileModal;
-
 const styles = StyleSheet.create({
-  centeredView: {
+  container: {
+    flex: 1
+  },
+  inner: {
     flex: 1,
+    padding: 24,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)'
   },
   modalView: {
-    width: '80%',
-    // height: '70%',
-    // margin: 20,
-    // flex: 1,
-    // flexDirection: 'row',
+    width: '90%',
     backgroundColor: 'white',
     borderRadius: 5,
     padding: 35,
@@ -116,3 +152,5 @@ const styles = StyleSheet.create({
     right: 10
   }
 });
+
+export default ProfileModal;

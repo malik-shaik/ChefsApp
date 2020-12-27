@@ -14,4 +14,10 @@ const loadUser = async (data) => {
   return await api.get(apiUrl, data);
 };
 
-export default { login, loadUser };
+const updateProfile = async (data) => {
+  const apiUrl = `${endpoint}/profile/edit`;
+  api.setHeaders({ 'auth-token': await getToken() });
+  return await api.patch(apiUrl, data);
+};
+
+export default { login, loadUser, updateProfile };
