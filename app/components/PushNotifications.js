@@ -29,18 +29,19 @@ const PushNotifications = () => {
     notificationListener.current = Notifications.addNotificationReceivedListener(
       async (notification) => {
         console.log('APP IS FOREGROUND (OPEN) AND RECIVED NOTIFICATION');
-        // console.log('BADGE : ', notification.request.content.badge);
-        // setNotification(notification);
-        // await setBadgeNumberAction(notification.request.content.badge);
         await setBadgeNumberAction(1);
         await loadAllOrdersAction('all');
       }
     );
 
     // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
-    responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
-      console.log('RESPONSE :', response);
-    });
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(
+      async (response) => {
+        console.log('RESPONSE :', response);
+        await setBadgeNumberAction(1);
+        await loadAllOrdersAction('all');
+      }
+    );
 
     return () => {
       Notifications.removeNotificationSubscription(notificationListener);

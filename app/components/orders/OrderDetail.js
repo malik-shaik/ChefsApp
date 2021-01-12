@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import Icon from '../layout/Icon';
 import colors from '../../config/colors';
+
+const window = Dimensions.get('window');
 
 const OrderDetail = ({ icon, header, details, iconStyles }) => {
   return (
@@ -24,16 +26,18 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10
+    marginBottom: window.height > 672 ? 10 : 5
   },
   iconContainer: {
-    height: 50,
-    width: 50,
+    height: window.height > 672 ? 50 : 40,
+    width: window.height > 672 ? 50 : 40,
+    // height: 50,
+    // width: 50,
     // backgroundColor: colors.inactivePrimary,
     backgroundColor: 'rgba(0, 132, 137, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 15
+    borderRadius: window.height > 672 ? 15 : 10
     // justifyContent: 'center'
     // marginLeft: 40
   },

@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import { reducer, authState } from './authReducer';
+import { reducer, authState } from './authStore';
 import { errorMessages } from '../../utils';
 import {
   AUTH_ERROR,
@@ -33,16 +33,6 @@ export const AuthProvider = (props) => {
 
   // Login User Action
   const loginAction = async (data) => {
-    // console.log('login clicked');
-    // const options = {
-    //   method: 'POST',
-    //   headers: { 'Content-type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // };
-    // const res = await fetch('http://localhost:5000/users/login', options);
-    // console.log(res.status);
-    // const data1 = await res.json();
-    // console.log(data1);
     const res = await userAPI.login(data);
     console.log(res);
     if (res.ok) {

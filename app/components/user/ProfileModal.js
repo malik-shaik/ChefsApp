@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Platform,
   Text,
+  Pressable,
   TouchableOpacity,
   Modal
 } from 'react-native';
@@ -15,6 +16,7 @@ import colors from '../../config/colors';
 import validationSchemas from '../../utils/validationSchemas';
 import ProfileInfo from './ProfileInfo';
 import SubmitButton from '../layout/form/SubmitButton';
+// import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 const ProfileModal = ({
   modalVisible,
@@ -34,9 +36,12 @@ const ProfileModal = ({
       >
         <View style={styles.inner}>
           <View style={styles.modalView}>
-            <TouchableOpacity style={styles.close} onPress={closeModal}>
+            <Pressable style={styles.close} onPress={closeModal}>
               <Icon icon={icons.close} size={30} color={colors.medium} extraStyles={styles.close} />
-            </TouchableOpacity>
+            </Pressable>
+            {/* <TouchableOpacity style={styles.close} onPress={closeModal}>
+              <Icon icon={icons.close} size={30} color={colors.medium} extraStyles={styles.close} />
+            </TouchableOpacity> */}
 
             {responseMessage ? (
               <Text>{responseMessage}</Text>
