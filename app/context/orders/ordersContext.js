@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import { ordersReducer, ordersState } from './ordersReducer';
+import { ordersReducer, ordersState } from './ordersStore';
 import { ordersAPI } from '../../api';
 import {
   LOAD_ALL_MESSAGES,

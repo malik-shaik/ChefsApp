@@ -8,6 +8,8 @@ import OrdersScreen from '../../../screens/OrdersScreen';
 import OrdersScreen1 from '../../../screens/OrdersScreen1';
 import ConfirmedMessagesScreen from '../../../screens/ConfirmedMessagesScreen';
 import UnreadMessagesScreen from '../../../screens/UnreadMessagesScreen';
+import AllMessagesScreen from '../../../screens/AllMessagesScreen';
+import PendingMessagesScreen from '../../../screens/PendingMessagesScreen';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -31,10 +33,16 @@ const TopTabsNavigator = () => {
           backgroundColor: 'white'
         }}
       >
-        <Tab.Screen name="All" component={OrdersScreen} initialParams={{ type: 'all' }} />
+        <Tab.Screen
+          name="All"
+          component={AllMessagesScreen}
+          // component={OrdersScreen}
+          initialParams={{ type: 'all' }}
+        />
         <Tab.Screen
           name="Pending"
-          component={OrdersScreen1}
+          // component={OrdersScreen1}
+          component={PendingMessagesScreen}
           initialParams={{ type: 'requested' }}
         />
         <Tab.Screen

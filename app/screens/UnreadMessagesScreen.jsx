@@ -4,6 +4,7 @@ import Screen from '../components/layout/Screen';
 import { OrdersContext } from '../context/orders/ordersContext';
 import Order from '../components/orders/Order';
 import { NotificationContext } from '../context/notifications/notificationContext';
+import Message from '../components/messages/Message';
 
 const OrdersScreen = ({ route }) => {
   const type = route.params.type;
@@ -28,7 +29,7 @@ const OrdersScreen = ({ route }) => {
       {isReady && unreadOrders !== undefined ? (
         <FlatList
           data={unreadOrders}
-          renderItem={({ item }) => <Order order={item} />}
+          renderItem={({ item }) => <Message order={item} />}
           keyExtractor={(item) => item.id.toString()}
         />
       ) : (

@@ -1,29 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, Text, FlatList } from 'react-native';
+import { StyleSheet, Text, FlatList, View } from 'react-native';
 import Screen from '../components/layout/Screen';
 import { OrdersContext } from '../context/orders/ordersContext';
 import Order from '../components/orders/Order';
 import Message from '../components/messages/Message';
 
-const OrdersScreen = ({ route }) => {
+const PendingMessagesScreen = ({ route }) => {
   const type = route.params.type;
-  const { confirmedOrders, loadAllOrdersAction } = useContext(OrdersContext);
+  const { allOrders, loadAllOrdersAction } = useContext(OrdersContext);
   const [isReady, setIsReady] = useState(false);
+
+  // TODO: implement loading icon ..
 
   useEffect(() => {
     const getOrders = async () => {
       const loaded = await loadAllOrdersAction(type); //eslint-disable-next-line
       loaded && setIsReady(true);
     };
-
     getOrders();
   }, []);
 
   return (
     <Screen>
-      {isReady && confirmedOrders !== undefined ? (
+      {isReady && allOrders !== undefined ? (
         <FlatList
-          data={confirmedOrders}
+          data={allOrders}
           renderItem={({ item }) => <Message order={item} />}
           keyExtractor={(item) => item.id.toString()}
         />
@@ -34,6 +35,6 @@ const OrdersScreen = ({ route }) => {
   );
 };
 
-export default OrdersScreen;
+export default PendingMessagesScreen;
 
 const styles = StyleSheet.create({});
