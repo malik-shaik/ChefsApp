@@ -1,11 +1,12 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Screen from "../components/layout/Screen";
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import Screen from '../components/layout/Screen';
+import UnderConstruction from '../components/layout/UnderConstruction';
 
 const MenusScreen = () => {
   return (
     <Screen>
-      <Text>Menues</Text>
+      <UnderConstruction />
     </Screen>
   );
 };

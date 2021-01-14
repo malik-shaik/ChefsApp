@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from '../layout/Icon';
-import Modal from '../Modal';
 
 const ProfileHeader = ({ header, icon, openModal }) => {
-  //   const [showModal, setShowModal] = useState(false);
-
-  //   const openModal = () => {};
 
   return (
     <View style={styles.header}>
@@ -26,12 +22,12 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 15,
-    marginBottom: 10
+    alignItems:'center',
+    marginBottom: 15
   },
   text: {
     fontSize: 20,
-    fontWeight: '400'
+    fontWeight: '500'
   },
   iconContainer: {
     position: 'absolute',

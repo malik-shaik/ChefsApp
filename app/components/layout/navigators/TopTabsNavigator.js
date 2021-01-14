@@ -1,11 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import colors from '../../../config/colors';
-import Screen from '../Screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import OrdersScreen from '../../../screens/OrdersScreen';
-import OrdersScreen1 from '../../../screens/OrdersScreen1';
 import ConfirmedMessagesScreen from '../../../screens/ConfirmedMessagesScreen';
 import UnreadMessagesScreen from '../../../screens/UnreadMessagesScreen';
 import AllMessagesScreen from '../../../screens/AllMessagesScreen';
@@ -27,21 +24,14 @@ const TopTabsNavigator = () => {
             textTransform: 'none',
             width: 100
           }
-          // tabStyle: { width: 100 }
         }}
         sceneContainerStyle={{
           backgroundColor: 'white'
         }}
       >
-        <Tab.Screen
-          name="All"
-          component={AllMessagesScreen}
-          // component={OrdersScreen}
-          initialParams={{ type: 'all' }}
-        />
+        <Tab.Screen name="All" component={AllMessagesScreen} initialParams={{ type: 'all' }} />
         <Tab.Screen
           name="Pending"
-          // component={OrdersScreen1}
           component={PendingMessagesScreen}
           initialParams={{ type: 'requested' }}
         />

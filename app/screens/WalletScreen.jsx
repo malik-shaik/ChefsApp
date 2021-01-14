@@ -1,11 +1,12 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Screen from "../components/layout/Screen";
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Screen from '../components/layout/Screen';
+import UnderConstruction from '../components/layout/UnderConstruction';
 
 const WalletScreen = () => {
   return (
     <Screen>
-      <Text>Wallet</Text>
+      <UnderConstruction />
     </Screen>
   );
 };

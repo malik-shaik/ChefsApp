@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import Card from '../components/layout/Card';
 import Screen from '../components/layout/Screen';
 import icons from '../config/icons';
@@ -7,6 +7,8 @@ import ProfileInfo from '../components/user/ProfileInfo';
 import ProfileHeader from '../components/user/ProfileHeader';
 import ProfileModal from '../components/user/ProfileModal';
 import { AuthContext } from '../context/auth/authContext';
+
+const window = Dimensions.get('window');
 
 const PersonalDetailsScreen = ({ route }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -41,7 +43,7 @@ const PersonalDetailsScreen = ({ route }) => {
         formType={formType}
       />
 
-      <View>
+      {/* <View> */}
         <Card extraStyles={styles.card}>
           <ProfileHeader
             header="Personal Details"
@@ -63,7 +65,7 @@ const PersonalDetailsScreen = ({ route }) => {
           <ProfileInfo title="Post number" data={postal} />
           <ProfileInfo title="City" data={city} extraStyles={{ borderBottomWidth: 0 }} />
         </Card>
-      </View>
+      {/* </View> */}
     </Screen>
   );
 };
@@ -72,17 +74,6 @@ export default PersonalDetailsScreen;
 
 const styles = StyleSheet.create({
   card: {
-    width: '100%',
-    height: '46%',
-    borderColor: 'rgba(204, 204, 204, 0.5)',
-    borderTopWidth: 1,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopLeftRadius: 35,
-    borderTopRightRadius: 35,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    marginTop: 25,
-    position: 'relative'
+    height: window.height*0.34,
   }
 });

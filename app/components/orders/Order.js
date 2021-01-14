@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, Image, View, Dimensions, TouchableOpacity } from 'react-native';
 import Card from '../layout/Card';
 import Icon from '../layout/Icon';
 import colors from '../../config/colors';
 import icons from '../../config/icons';
-import { OrdersContext } from '../../context/orders/ordersContext';
 import { getImageSrc } from '../../utils/helpers';
 
 const window = Dimensions.get('window');
@@ -14,17 +13,10 @@ const window = Dimensions.get('window');
 const Order = ({ order }) => {
   const imageName = order.customer_image || order.customer_image_default;
   const imageSrc = getImageSrc(imageName);
-  // const imageSrc = `https://res.cloudinary.com/hcogndlqd/image/upload/uploads/${imageName}`;
 
-  const { setOneOrderAction } = useContext(OrdersContext);
   const navigation = useNavigation();
 
-  const getOrderHanler = async () => {
-    // await setOneOrderAction(order.token);
-    // console.log('TOKEN : ', order.token);
-    navigation.navigate('Order details', { order });
-    // navigation.navigate('Order details', { orderToken: order.token });
-  };
+  const getOrderHanler = async () => navigation.navigate('Order details', { order });
 
   return (
     <TouchableOpacity onPress={getOrderHanler}>

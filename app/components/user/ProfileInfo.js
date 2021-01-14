@@ -35,8 +35,8 @@ export default ProfileInfo;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
-    width: '80%',
+    marginTop: 15,
+    width: '90%',
     alignSelf: 'center',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(204, 204, 204, 0.5)'
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
   data: {
     color: 'rgba(0, 0, 0, 0.8)',
     fontSize: 16,
-    marginTop: 15,
-    marginBottom: 12
+    marginTop: 5,
+    marginBottom: 3
   },
   fromfield: {
     marginTop: 10,
