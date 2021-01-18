@@ -8,7 +8,7 @@ import ProfileDetails from '../components/user/ProfileDetails';
 import icons from '../config/icons';
 import colors from '../config/colors';
 
-const ProfileScreen = () => {
+const AccountScreen = () => {
   const { user } = useContext(AuthContext);
 
   return (
@@ -36,7 +36,7 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default AccountScreen;
 
 const styles = StyleSheet.create({
   logout: {

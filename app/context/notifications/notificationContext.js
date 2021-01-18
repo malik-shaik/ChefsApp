@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import { badgeState, notificationReducer } from './notificaitonReducer';
+import { badgeState, notificationReducer } from './notificationStore';
 import { SET_BADGE_NUMBER } from '../../utils/actionTypes';
 
 export const NotificationContext = createContext();
@@ -12,7 +12,6 @@ export const NotificationProvider = (props) => {
 
   // Set Badge number
   const setBadgeNumberAction = async (badge) => {
-    // TODO : implement this
     console.log('BADGE: ', badge);
     dispatch({ type: SET_BADGE_NUMBER, payload: { badge } });
   };

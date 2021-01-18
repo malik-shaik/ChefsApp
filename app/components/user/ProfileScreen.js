@@ -1,17 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ProfileScreen from '../../screens/ProfileScreen';
+import AccountScreen from '../../screens/AccountScreen';
 import PersonalDetailsScreen from '../../screens/PersonalDetailsScreen';
 import SecurityDetailsScreen from '../../screens/SecurityDetailsScreen';
 import colors from '../../config/colors';
 
 const Stack = createStackNavigator();
 
-const ProfileStackNavigator = () => {
+const ProfileScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Profile" component={AccountScreen} options={{ headerShown: false }} />
       <Stack.Screen
         name="Personal details"
         component={PersonalDetailsScreen}
@@ -35,6 +35,6 @@ const ProfileStackNavigator = () => {
   );
 };
 
-export default ProfileStackNavigator;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({});
